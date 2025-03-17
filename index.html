@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Should You Do with This Plastic Bottle?</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .main-image {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .recycle {
+            position: absolute;
+            top: 60%;  /* Move up/down */
+            left: 40%;  /* Move left/right */
+            transform: translate(-50%, -50%);
+        }
+        .waste {
+            position: absolute;
+            top: 60%;  /* Move up/down */
+            left: 60%;  /* Move left/right */
+            transform: translate(-50%, -50%);
+        }
+
+
+        .buttons button {
+            padding: 15px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .recycle {
+            background-color: green;
+            color: white;
+        }
+        .waste {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/i1.png" alt="What should you do with this plastic bottle?" class="main-image">
+        <div class="buttons">
+            <button onclick="location.href='recycle.html'" class="recycle">♻ Recycle It</button>
+            <button onclick="location.href='waste.html'" class="waste">🚮 Waste It</button>
+        </div>
+    </div>
+</body>
+</html>
