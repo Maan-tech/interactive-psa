@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You for Recycling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css"> <!-- Keep your existing CSS file -->
+</head>
+<body>
+
+  <section class="celebration">
+    <h1 class="thankyou-text">✨ Thank You for Choosing to Recycle! ✨</h1>
+    <p class="message">♻️ Small actions lead to big change.</p>
+
+    <div class="final-buttons">
+      <a href="recycle2.html" class="nav-button back">⬅ Back</a>
+      <a href="index.html" class="nav-button start">🔁 Start Over</a>
+    </div>
+    
+  </section>
+
+  <!-- Confetti Animation Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Launch confetti when the page loads
+    window.onload = () => {
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 }
+      });
+    };
+  </script>
+
+</body>
+</html>

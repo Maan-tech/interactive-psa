@@ -1,0 +1,458 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #e0f7fa, #80deea);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    transition: background 1.5s ease-in-out;
+}
+
+/* Background transition effect */
+.transition-active {
+    background: linear-gradient(to bottom, #e0f7fa, #a5d6a7);
+}
+
+.container{
+    transition: box-shadow 1.5s ease-in-out;
+}
+
+.transition-active .container {
+    box-shadow: 0px 0px 20px rgba(76, 175, 80, 0.5);
+}
+
+header {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+header p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Sun Animation */
+.sun {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffeb3b, #fbc02d);
+    border-radius: 50%;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 20px rgba(255, 223, 0, 0.8);
+    animation: sunMove 5s infinite alternate ease-in-out;
+}
+
+@keyframes sunMove {
+    from {
+        transform: translateX(-50%) translateY(0);
+    }
+    to {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* Container with fade-in effect */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+    z-index: 2;
+    position: relative;
+}
+
+h1 {
+    color: #333;
+    font-weight: bold;
+    animation: popIn 1s ease-in-out;
+}
+
+/* Bottle Animation */
+.bottle {
+    width: 50px;
+    height: 120px;
+    background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+    margin: 40px auto 20px auto;
+    border-radius: 10px 10px 5px 5px;
+    position: relative;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    animation: float 2s infinite ease-in-out alternate;
+}
+
+.bottle::before {
+    content: "";
+    width: 30px;
+    height: 20px;
+    background: #1e40af;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* Buttons fade-in smoothly */
+.buttons {
+    margin-top: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+button {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:nth-child(1) {
+    background: #ef4444; /* 🔴 Red for first button (now "Next Step") */
+  }
+  
+  button:nth-child(1):hover {
+    background: #dc2626; /* 🔴 Darker red on hover */
+  }
+  
+  button:nth-child(2) {
+    background: #16a34a; /* 🟢 Green for second button (now "Back") */
+  }
+  
+  button:nth-child(2):hover {
+    background: #12833c; /* 🟢 Slightly darker green on hover */
+  }
+
+/* Grass at Bottom */
+.grass {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to top, #2e7d32, #4caf50);
+    border-top-left-radius: 50% 20px;
+    border-top-right-radius: 50% 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+/* Animation Container - Move Animations to Top */
+.recycle-page .animation-container {
+    position: absolute;
+    top: 20px; /* Move animation towards the top */
+    left: 0;
+    width: 100vw;
+    height: 200px; /* Increased height for better spacing */
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* --- MOVING BOTTLE --- */
+.recycle-page .bottle-animation {
+    width: 50px;
+    height: 120px;
+    background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+    border-radius: 10px 10px 5px 5px;
+    position: absolute;
+    left: -80px; /* Adjust start position */
+    top: 20px; /* Move bottle higher */
+    animation: moveBottle 6s linear infinite;
+}
+
+@keyframes moveBottle {
+    0% { left: -80px; opacity: 1; } /* Start */
+    40% { left: 35%; opacity: 1; } /* Move to truck */
+    50% { opacity: 0; } /* Disappear inside truck */
+    100% { opacity: 0; } /* Fully gone */
+}
+
+/* --- TRUCK --- */
+.truck {
+    width: 120px;
+    height: 60px;
+    background: #666;
+    position: absolute;
+    top: -120px;
+    left: 25%;
+    border-radius: 10px;
+    z-index: 3;
+    animation: moveTruck 12s ease-in-out infinite;
+  }
+  
+  @keyframes moveTruck {
+    0%, 30% { left: 25%; opacity: 1; }  /* Waits until bottle enters */
+    60%     { left: 65%; opacity: 1; }  /* Moves toward factory */
+    70%     { opacity: 0; }             /* Disappears */
+    100%    { opacity: 0; }
+  }
+  
+
+
+/* --- FACTORY --- */
+.factory {
+    width: 150px;
+    height: 100px;
+    background: #444;
+    position: absolute;
+    top: -150px; /* move higher */
+    right: 5%;
+    border-radius: 10px;
+    opacity: 1;
+    z-index: 2;
+    animation: hideFactory 12s ease-in-out infinite;
+  }
+  
+  @keyframes hideFactory {
+    0%, 75%  { opacity: 1; }  /* Always visible until truck goes in */
+    90%,100% { opacity: 0; }  /* Disappear smoothly */
+  }
+  
+  
+
+.extra-bottle {
+    width: 50px;
+    height: 120px;
+    background: linear-gradient(to bottom, #06b6d4, #67e8f9);
+    border-radius: 10px 10px 5px 5px;
+    position: absolute;
+    top: -170px;
+    left: -60px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 4;
+    animation: moveExtraBottle 12s ease-in-out infinite;
+  }
+  
+  @keyframes moveExtraBottle {
+    0%   { left: -60px; opacity: 1; }
+    25%  { left: 25%; opacity: 1; }  /* Reaches truck */
+    30%  { opacity: 0; }            /* Disappears */
+    100% { opacity: 0; }
+  }
+  
+/* --- for recycle 1 page --- */
+.video-container {
+    width: 90%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  
+/* === for recycle 2 page === */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e0f2f1;
+  }
+  
+  .box-layout {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .box-layout h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #004d40;
+  }
+  
+  .box-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .box {
+    width: 300px;
+    height: 240px;
+    background-color: #ffffff;
+    border: 3px solid #26a69a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #00695c;
+    font-size: 1.3rem;
+  }
+  
+  .box img {
+    width: 100%;               /* fit nicely inside box */
+    height: 101%;              /* adjust height relative to box */
+    object-fit: cover;        /* crop excess without distortion */
+    border-radius: 10px;
+    margin-top: -1px;         /* optional, to push image slightly down */
+  }
+
+  .box img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .navigation-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  /* Shared button styling */
+.nav-button {
+    text-decoration: none;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Back button - red */
+  .nav-button.back {
+    background-color: #e53935;
+  }
+  .nav-button.back:hover {
+    background-color: #c62828;
+  }
+  
+  /* Next button - green */
+  .nav-button.next {
+    background-color: #2e7d32;
+  }
+  .nav-button.next:hover {
+    background-color: #1b5e20;
+  }
+  
+  /* --- for recycle 3 page --- */
+
+  .celebration {
+    text-align: center;
+    padding: 3rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #e0f7fa, #c8e6c9);
+  }
+  
+  .thankyou-text {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    animation: fadeInUp 1.2s ease-out;
+  }
+  
+  .message {
+    font-size: 1.2rem;
+    color: #388e3c;
+    margin-top: 1rem;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .final-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-button {
+    background-color: #2e7d32;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  

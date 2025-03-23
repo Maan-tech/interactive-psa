@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling - Step 1</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.body.classList.add("transition-active");
+            }, 500);
+        });
+    </script>
+</head>
+<body class="recycle-page">
+    <div class="container">
+        <h1>Good Choice! ♻️</h1>
+        <p>Your plastic bottle is now on its way to a recycling center.</p>
+        
+        <!-- Scene containing truck, factory, and bottle -->
+        <div class="scene">
+            <div class="bottle"></div>
+            <div class="truck"></div>
+            <div class="extra-bottle"></div>
+            <div class="factory">
+                <div class="factory-door"></div>
+            </div>
+        </div>
+        
+        <p>Recycling helps reduce pollution and gives plastic a second life!</p>
+        <div class="buttons">
+            <button onclick="location.href='index.html'">Go Back to Home</button>
+            <button onclick="location.href='recycle1.html'">Next Step →</button>
+        </div>
+    </div>
+</body>
+</html>
