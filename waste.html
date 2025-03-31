@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Waste It - Parallax Scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scene1 {
+      background: #a1887f;
+    }
+
+    .river {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 70%;
+      background: #4fc3f7;
+      clip-path: ellipse(90% 50% at 50% 100%);
+      animation: waveFlow 4s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes waveFlow {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-10px); }
+    }
+
+    .person {
+      position: absolute;
+      bottom: 35%;
+      left: 10%;
+      width: 50px;
+      height: 120px;
+      background: #5d4037;
+      border-radius: 10px;
+      z-index: 3;
+    }
+
+    .person::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      background: #3e2723;
+      border-radius: 50%;
+    }
+
+    .arm {
+      position: absolute;
+      width: 60px;
+      height: 10px;
+      background: #5d4037;
+      top: 40px;
+      left: 40px;
+      border-radius: 5px;
+      transform-origin: left center;
+      transform: rotate(-25deg);
+    }
+
+    .bottle, .text-box {
+      position: absolute;
+      z-index: 4;
+      opacity: 0;
+    }
+
+    .bottle {
+      width: 25px;
+      height: 70px;
+      background: #90caf9;
+      border-radius: 8px 8px 5px 5px;
+      top: 47%;
+      left: 16%;
+      animation: bottleThrow 6s ease-in-out infinite;
+    }
+
+    .bottle::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 12px;
+      background: #1976d2;
+      top: -12px;
+      left: 0;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .text-box {
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1.8rem;
+      animation: textFade 6s ease-in-out infinite;
+    }
+
+    @keyframes bottleThrow {
+      0% { top: 47%; left: 16%; opacity: 1; transform: rotate(0deg); }
+      30% { top: 35%; left: 40%; transform: rotate(15deg); opacity: 1; }
+      60% { top: 55%; left: 70%; transform: rotate(5deg); opacity: 1; }
+      80% { top: 55%; left: 70%; opacity: 0; transform: rotate(5deg); }
+      100% { top: 45%; left: 12%; opacity: 0; transform: rotate(0deg); }
+    }
+
+    @keyframes textFade {
+      0%, 80%, 100% { opacity: 0; }
+      10%, 60% { opacity: 1; }
+    }
+
+    .scene2 {
+      background: linear-gradient(to bottom, #607d8b, #455a64);
+      color: white;
+    }
+
+    .scene2 .dark-river {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 70%;
+      background: #37474f;
+      clip-path: ellipse(90% 50% at 50% 100%);
+      animation: waveFlow 5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .trash {
+      position: absolute;
+      width: 20px;
+      height: 40px;
+      background: #90caf9;
+      border-radius: 5px;
+      opacity: 0.7;
+      animation: floatTrash 10s linear infinite;
+    }
+
+    .trash::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      width: 100%;
+      height: 8px;
+      background: #1976d2;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .trash:nth-child(2) { left: 30%; top: 60%; animation-delay: 0s; }
+    .trash:nth-child(3) { left: 50%; top: 65%; animation-delay: 2s; }
+    .trash:nth-child(4) { left: 70%; top: 58%; animation-delay: 4s; }
+
+    @keyframes floatTrash {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(-5deg); }
+    }
+
+    .text-box2 {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1.8rem;
+      color: white;
+      animation: fadeIn 2s ease forwards;
+      z-index: 2;
+    }
+
+    .scene3 {
+      background: linear-gradient(to bottom, #263238, #000);
+      position: relative;
+      color: white;
+    }
+
+    .turtle {
+      position: absolute;
+      bottom: 20%;
+      left: 20%;
+      width: 100px;
+      height: 60px;
+      background: #4db6ac;
+      border-radius: 60% 60% 50% 50%;
+      animation: swim 10s ease-in-out infinite;
+    }
+
+    .turtle::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #00796b;
+      border-radius: 50%;
+      left: -20px;
+      top: 15px;
+    }
+
+    .turtle::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid #004d40;
+      right: -10px;
+      top: 25px;
+    }
+
+    .turtle-leg {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #00796b;
+      border-radius: 50%;
+    }
+
+    .leg1 { top: 0; left: 10px; }
+    .leg2 { top: 0; right: 10px; }
+    .leg3 { bottom: 0; left: 10px; }
+    .leg4 { bottom: 0; right: 10px; }
+
+    .turtle-face {
+      position: absolute;
+      top: 5px;
+      left: 35px;
+      font-size: 1.2rem;
+      z-index: 3;
+      animation: pulse 2s infinite;
+    }
+
+    .plastic-ring {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #ffffff55;
+      border-radius: 50%;
+      bottom: 22%;
+      left: 22%;
+      animation: ringFloat 6s ease-in-out infinite;
+    }
+
+    .floating-bag-emoji {
+      position: absolute;
+      font-size: 2.5rem;
+      bottom: 35%;
+      left: 100%;
+      animation: bagDrift 14s ease-in-out infinite;
+      z-index: 2;
+      opacity: 0;
+    }
+
+    @keyframes bagDrift {
+      0% { left: 100%; transform: rotate(-10deg); opacity: 0; }
+      10% { opacity: 1; }
+      50% { left: 45%; transform: rotate(5deg); }
+      60% { opacity: 1; }
+      100% { left: -60px; opacity: 0; }
+    }
+
+    .bag-tangled {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 20px;
+      left: 60px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .bubble, .bubble2, .bubble3 {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .bubble { width: 12px; height: 12px; bottom: 20%; left: 60%; animation: rise 6s ease-in-out infinite; }
+    .bubble2 { width: 8px; height: 8px; bottom: 10%; left: 30%; animation: rise 7s ease-in-out infinite 1s; }
+    .bubble3 { width: 16px; height: 16px; bottom: 5%; left: 75%; animation: rise 8s ease-in-out infinite 2s; }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.5; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-250px) scale(1.5); opacity: 0; }
+    }
+
+    .sick-fish {
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 20px;
+      background: #f48fb1;
+      border-radius: 20px 50% 50% 20px;
+      transform: translateX(100vw);
+      animation: swimBy 12s ease-in-out infinite;
+    }
+
+    .sick-fish::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      right: -10px;
+      top: 5px;
+      border-left: 10px solid #f48fb1;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+
+    .fish-eye {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: black;
+      border-radius: 50%;
+      top: 6px;
+      left: 8px;
+    }
+
+    @keyframes swimBy {
+      0%   { transform: translateX(100vw); opacity: 0; }
+      5%   { opacity: 1; }
+      80%  { transform: translateX(-100px); opacity: 1; }
+      81%  { opacity: 0; }
+      100% { transform: translateX(100vw); opacity: 0; }
+    }
+
+    .text-box3 {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1.8rem;
+      color: white;
+      animation: fadeIn 2s ease forwards;
+      z-index: 3;
+    }
+
+    @keyframes swim {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(20px) translateY(-10px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    @keyframes ringFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeInText 1.5s ease forwards;
+  animation-delay: 10s;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  color: white;
+}
+
+.btn.back {
+  background: #546e7a;
+}
+
+.btn.forward {
+  background: #4caf50;
+}
+
+.btn.back:hover {
+  background: #37474f;
+}
+
+.btn.forward:hover {
+  background: #388e3c;
+}
+
+.scene4 {
+  position: relative;
+  height: 100vh;
+  background: radial-gradient(ellipse at center, #263238 0%, #000000 100%);
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: bgPulse 10s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { background: radial-gradient(ellipse at center, #263238 0%, #000000 100%); }
+  50% { background: radial-gradient(ellipse at center, #1b1b1b 0%, #000000 100%); }
+}
+
+.floating-emoji {
+  position: absolute;
+  top: -50px;
+  font-size: 2.5rem;
+  animation: fall 12s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+.final-line {
+  font-size: 2rem;
+  opacity: 0;
+  margin: 0.5rem 0;
+  animation: textFadeIn 2s ease forwards;
+}
+
+.line1 { animation-delay: 1s; }
+.line2 { animation-delay: 3s; }
+.line3 { animation-delay: 5s; }
+.line4 { animation-delay: 7s; }
+.line5 {
+  animation-delay: 9s;
+  font-weight: bold;
+  font-size: 2.5rem;
+  animation-name: zoomInText;
+}
+
+@keyframes textFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes zoomInText {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+.nav-btns {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 12s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+
+  </style>
+</head>
+<body>
+  <section class="scene1">
+    <div class="land"></div>
+    <div class="river"></div>
+    <div class="person">
+      <div class="arm"></div>
+    </div>
+    <div class="bottle"></div>
+    <div class="text-box">It’s just one bottle, right?</div>
+  </section>
+
+  <section class="scene2">
+    <div class="dark-river"></div>
+    <div class="trash"></div>
+    <div class="trash"></div>
+    <div class="trash"></div>
+    <div class="text-box2">But that one bottle... joins millions of others.</div>
+  </section>
+
+  <section class="scene3">
+    <div class="turtle">
+      <div class="turtle-leg leg1"></div>
+      <div class="turtle-leg leg2"></div>
+      <div class="turtle-leg leg3"></div>
+      <div class="turtle-leg leg4"></div>
+      <div class="turtle-face">😢</div>
+      <div class="bag-tangled">🧴</div>
+    </div>
+    <div class="plastic-ring"></div>
+    <div class="bubble"></div>
+    <div class="bubble2"></div>
+    <div class="bubble3"></div>
+    <div class="sick-fish">
+      <div class="fish-eye"></div>
+    </div>
+    <div class="text-box3">And someone else pays the price.</div>
+    <div class="floating-bag-emoji">🧴</div>
+  </section>
+</body>
+</html>
+<section class="scene4">
+    <div class="floating-emoji">🗑️</div>
+    <div class="floating-emoji" style="left: 70%; animation-delay: 2s;">🧃</div>
+    <div class="floating-emoji" style="left: 40%; animation-delay: 4s;">🧴</div>
+    <div class="floating-emoji" style="left: 20%; animation-delay: 6s;">🍾</div>
+  
+    <div class="final-line line1">It was just one bottle…</div>
+    <div class="final-line line2">But one became millions.</div>
+    <div class="final-line line3">And now… they’re dying.</div>
+    <div class="final-line line4">What if it was your world?</div>
+    <div class="final-line line5">Would you still waste it?</div>
+  
+    <div class="nav-btns">
+      <a href="index.html" class="btn back">⬅ Go Back</a>
+      <a href="waste1.html" class="btn forward">Next Page ➡</a>
+    </div>
+  </section>
+  
+  
+  

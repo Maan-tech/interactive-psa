@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Ripple Effect</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #111, #222);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .video-card {
+      background: #000;
+      padding: 1rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      max-width: 720px;
+      width: 90%;
+      margin: 2rem auto;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .facts {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .facts p {
+      margin: 0.5rem 0;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .facts p:nth-child(1) { animation-delay: 0.5s; }
+    .facts p:nth-child(2) { animation-delay: 1.5s; }
+    .facts p:nth-child(3) { animation-delay: 2.5s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-btns {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.7rem 1.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn.back {
+      background: #546e7a;
+    }
+
+    .btn.forward {
+      background: #4caf50;
+    }
+
+    .btn.back:hover {
+      background: #37474f;
+    }
+
+    .btn.forward:hover {
+      background: #388e3c;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🌍 The Ripple Effect</h1>
+
+  <div class="video-card">
+    <video controls playsinline width="100%">
+      <source src="page1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="facts">
+    <p>💧 Over 1 million plastic bottles are bought every minute.</p>
+    <p>🧴 91% of them aren’t recycled.</p>
+    <p>🌊 Most end up in rivers, oceans, or landfills.</p>
+  </div>
+
+  <div class="nav-btns">
+    <a href="waste.html" class="btn back">⬅ Go Back</a>
+    <a href="waste2.html" class="btn forward">Next ➡</a>
+  </div>
+
+</body>
+</html>

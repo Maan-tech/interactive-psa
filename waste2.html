@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plastic Apocalypse</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #2c0000, #000);
+      background-size: 400% 400%;
+      animation: bgShift 40s linear infinite;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #ff5252;
+      text-shadow: 0 0 10px #ff1744aa;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .warning-text p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 2rem auto;
+      opacity: 0;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .warning-text p:nth-child(1) { animation-delay: 1s; }
+    .warning-text p:nth-child(2) { animation-delay: 3s; }
+    .warning-text p:nth-child(3) { animation-delay: 5s; }
+    .warning-text p:nth-child(4) { animation-delay: 7s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Glowing final message */
+    .final-line {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 4rem;
+      color: #ff3d00;
+      opacity: 0;
+      animation: glowIn 2s ease forwards, flicker 3s ease 9s forwards;
+      text-shadow: 0 0 12px #ff5722, 0 0 24px #ff3d00aa;
+    }
+
+    @keyframes flicker {
+    0% { opacity: 1; }
+    20% { opacity: 0.6; }
+    40% { opacity: 1; }
+    60% { opacity: 0.2; }
+    80% { opacity: 1; }
+    100% { opacity: 1; }
+    }
+
+    /* Floating ashes or bottle fragments */
+    .ash {
+      position: absolute;
+      bottom: -20px;
+      width: 12px;
+      height: 12px;
+      background: #ff5722;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: rise 10s linear infinite;
+    }
+
+    .ash:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .ash:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .ash:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .ash:nth-child(4) { left: 70%; animation-delay: 6s; }
+    .ash:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 0.4; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .nav-btns {
+      margin-top: 4rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .btn.back {
+      background: #546e7a;
+    }
+
+    .btn.forward {
+      background: #4caf50;
+    }
+
+    .btn.back:hover {
+      background: #37474f;
+    }
+
+    .btn.forward:hover {
+      background: #388e3c;
+    }
+    .sun {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ff5722, #bf360c);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff5722aa, 0 0 40px #ff3d00aa;
+    animation: sunPulse 3s ease-in-out infinite;
+    z-index: 0;
+    }
+
+    @keyframes sunPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    }
+    .smog {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(to top, #3e2723, transparent);
+    opacity: 0.25;
+    animation: fogRise 12s ease-in-out infinite;
+    z-index: 1;
+    }
+
+    @keyframes fogRise {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+    }
+    .closing-line {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    color: #ffab91;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 8s;
+    font-style: italic;
+    }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating fragments -->
+  <div class="ash"></div>
+  <div class="ash"></div>
+  <div class="ash"></div>
+  <div class="ash"></div>
+  <div class="ash"></div>
+
+  <h1>🔥 Plastic Apocalypse</h1>
+
+  <div class="warning-text">
+    <p>🧴 Plastic in the soil. Nothing grows anymore.</p>
+    <p>🌬️ Toxic air where children once played.</p>
+    <p>🐟 The oceans are quiet. Because nothing lives there now.</p>
+    <p>🧍 And we still say... it was just one bottle?</p>
+  </div>
+  <p class="closing-line">The end doesn’t have to look like this.</p>
+  <div class="sun"></div>
+  <div class="smog"></div>
+
+  <div class="final-line">⚠️ This isn’t a warning. It’s a preview.</div>
+
+  <div class="nav-btns">
+    <a href="waste1.html" class="btn back">⬅ Go Back</a>
+    <a href="waste3.html" class="btn forward">Next ➡</a>
+  </div>
+
+</body>
+</html>
