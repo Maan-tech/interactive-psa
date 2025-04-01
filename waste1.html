@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Ripple Effect</title>
   <style>
-    body {
+    * {
       margin: 0;
-      background: linear-gradient(to bottom, #111, #222);
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #1a1a1a, #220b0b, #330909);
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
@@ -16,6 +21,8 @@
       min-height: 100vh;
       color: white;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
@@ -95,9 +102,35 @@
       background: #388e3c;
     }
 
+    /* Particles */
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 100, 50, 0.2);
+      border-radius: 50%;
+      animation: float 12s linear infinite;
+    }
+
+    .particle:nth-child(1) { left: 15%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 35%; animation-delay: 4s; }
+    .particle:nth-child(3) { left: 60%; animation-delay: 2s; }
+    .particle:nth-child(4) { left: 80%; animation-delay: 6s; }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.2; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Soft particles rising (like pre-apocalypse dust) -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
 
   <h1>🌍 The Ripple Effect</h1>
 
